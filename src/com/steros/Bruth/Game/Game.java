@@ -1,4 +1,4 @@
-package com.steros.TwoDAdventure.Game;
+package com.steros.Bruth.Game;
 import static org.lwjgl.glfw.GLFW.*;
 
 import org.lwjgl.glfw.GLFWVidMode;
