@@ -1,1 +1,1 @@
-# Bruth-Game
+# Bruth Game
