@@ -1,9 +1,8 @@
 package bruth.game;
 import static org.lwjgl.glfw.GLFW.*;
-
 import org.lwjgl.glfw.GLFWVidMode;
-
 import bruth.game.gfx.Window;
+import bruth.game.engine.GameThread;
 
 /*
  * This is the main file that runs the game. It just creates a window with the information passed to it. 
@@ -11,7 +10,13 @@ import bruth.game.gfx.Window;
  */
 
 public class Game {
-	public static void main(String[] args) {
+	static Thread gameThread;
+	
+	public static void main(String[] args) throws InterruptedException {
+		gameThread = new GameThread();
+		gameThread.start();
+		gameThread.join();
+		
 		//Instantiate a Window object and use GLFW magic to build and display it (it's parameters will come from a config file later). 
 		Window window = new Window(160, 120, 3, "Bruth: Adventures of Mithia", glfwGetPrimaryMonitor());
 		window.create();
