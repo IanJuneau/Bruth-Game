@@ -13,10 +13,6 @@ public class Game {
 	static Thread gameThread;
 	
 	public static void main(String[] args) throws InterruptedException {
-		gameThread = new GameThread();
-		gameThread.start();
-		gameThread.join();
-		
 		//Instantiate a Window object and use GLFW magic to build and display it (it's parameters will come from a config file later). 
 		Window window = new Window(160, 120, 3, "Bruth: Adventures of Mithia", glfwGetPrimaryMonitor());
 		window.create();

@@ -66,7 +66,7 @@ public class Window {
 		
 		//GLFW initializes the window with with the information passed to the constructor. The line after logs that information.
 		this._window = glfwCreateWindow(this.getWidth(), this.getHeight(), this.getTitle(), this.getPreferredMonitor(), 0);
-		System.out.printf("[Window] Creating window - W: %d H: %d S: %d, Title: %s, Preferred Monitor: %d", this.getWidth(), this.getHeight(), this.getScale(), this.getTitle(), this.getPreferredMonitor());
+		System.out.printf("[Window] Creating window - W: %d H: %d S: %d, Title: %s, Preferred Monitor: %d\n", this.getWidth(), this.getHeight(), this.getScale(), this.getTitle(), this.getPreferredMonitor());
 		
 		//Checks to make sure the window didn't fail to initialize
 		if(this._window == 0) {
