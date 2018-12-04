@@ -1,8 +1,9 @@
-package com.steros.Bruth.Game;
-import ui.Window_init;
+package bruth.game;
 import static org.lwjgl.glfw.GLFW.*;
 
 import org.lwjgl.glfw.GLFWVidMode;
+
+import bruth.game.gfx.Window;
 
 /*
  * This is the main file that runs the game. Right now, there is window code in here which will later
@@ -14,7 +15,7 @@ public class Game {
 	
 	
 	public static void main(String[] args) {
-		Window_init ui = new Window_init();
+		Window ui = new Window();
 		
 		
 		ui.window();

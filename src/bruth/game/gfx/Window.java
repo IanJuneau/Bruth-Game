@@ -1,4 +1,4 @@
-package ui;
+package bruth.game.gfx;
 
 import static org.lwjgl.glfw.GLFW.GLFW_FALSE;
 import static org.lwjgl.glfw.GLFW.GLFW_VISIBLE;
@@ -15,7 +15,7 @@ import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
 
 import org.lwjgl.glfw.GLFWVidMode;
 
-public class Window_init {
+public class Window {
 	public static final int HEIGHT = 120;
 	public static final int WIDTH = 160;
 	private static final int SCALE = 3;
