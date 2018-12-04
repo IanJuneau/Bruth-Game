@@ -2,6 +2,7 @@ package bruth.game.gfx;
 
 import static org.lwjgl.glfw.GLFW.GLFW_FALSE;
 import static org.lwjgl.glfw.GLFW.GLFW_VISIBLE;
+import static org.lwjgl.glfw.GLFW.GLFW_RESIZABLE;
 import static org.lwjgl.glfw.GLFW.glfwCreateWindow;
 import static org.lwjgl.glfw.GLFW.glfwGetPrimaryMonitor;
 import static org.lwjgl.glfw.GLFW.glfwGetVideoMode;
@@ -60,6 +61,9 @@ public class Window {
 		if(!glfwInit()) {
 			throw new IllegalStateException("GLFW must be present and initialized!");
 		}
+		
+		//Set the window to not be resizable. This will be changed when "full screen" scalable graphics are added
+		glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 		
 		//GLFW initializes the window with with the information passed to the constructor. The line after logs that information.
 		this._window = glfwCreateWindow(this.getWidth(), this.getHeight(), this.getTitle(), this.getPreferredMonitor(), 0);
