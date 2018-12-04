@@ -16,49 +16,78 @@ import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
 import org.lwjgl.glfw.GLFWVidMode;
 
 public class Window {
-	public static final int HEIGHT = 120;
-	public static final int WIDTH = 160;
-	private static final int SCALE = 3;
-	private static long window;
+	private final int _windowWidth;
+	private final int _windowHeight;
+	private final int _windowScale;
+	private final String _windowTitle;
+	private final long _preferredMonitor;
+	private static long _window;
 	
-	public void window() {
-		//Throw error if LWJGL libs are not initializing
-				if(!glfwInit()) {
-					throw new IllegalStateException("Illegal State: GLFW must be present and initialized!");
-				}
-				
-				//Don't really know what this does yet
-				glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-
-				//Initializes the window object that comes with the game (it was declared at the top of the class)
-				window = glfwCreateWindow(WIDTH * SCALE, HEIGHT * SCALE, "Bruth: Adventures of Mithia", 0, 0);
-
-				//Throw error if there is no window or if it failed to create. Can't have a game without a window
-				if(window == 0) {
-					throw new IllegalStateException("There must be a window to run the game. Maybe it failed to create?");
-				}
-				
-				//Get the video mode of the computer's primary/default monitor
-				GLFWVidMode videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-				
-				System.out.println("Montior Width: " + videoMode.width());
-				System.out.println("Monitor Height: " + videoMode.height());
-				System.out.println("Game Width: " + (WIDTH * SCALE));
-				System.out.println("Game Height: " + (HEIGHT * SCALE));
-				
-				//Set the width and height of the window and position it in the middle of the screen
-				glfwSetWindowPos(window, (videoMode.width() - WIDTH * SCALE) / 2, (videoMode.height() - HEIGHT * SCALE) / 2);
-				
-				//Display the window to the screen
-				glfwShowWindow(window);
-				
-				//As long as the window has not been told to close, keep polling for work to do. (keeps the window open at all times)
-				while(!glfwWindowShouldClose(window)) {
-					glfwPollEvents();
-				}
-				
-				//Destroy window objects if the close command has been sent to the window
-				glfwTerminate();
-			
+	/* Constructors */
+	public Window(int width, int height, int scalar, String title, long preferredMonitor) {
+		this._windowWidth = width;
+		this._windowHeight = height;
+		this._windowScale = scalar;
+		this._windowTitle = title;
+		this._preferredMonitor = preferredMonitor;
 	}
+	
+	/* Public Getters */	
+	public int getWidth() {
+		return this._windowWidth * this._windowScale;
+	}
+	public int getHeight() {
+		return this._windowHeight * this._windowScale;
+	}
+	public int getScale() {
+		return this._windowScale;
+	}
+	public String getTitle() {
+		return this._windowTitle;
+	}
+	public long getGLFWWindowID() {
+		return this._window;
+	}
+	
+	/* Private Getters */
+	private long getPreferredMonitor() {
+		return this._preferredMonitor;
+	}
+	
+	/* Public Methods */
+	public void create() {
+		//Throw error if GLFW libs are not initializing
+		if(!glfwInit()) {
+			throw new IllegalStateException("GLFW must be present and initialized!");
+		}
+		
+		//GLFW initializes the window with with the information passed to the constructor. The line after logs that information.
+		this._window = glfwCreateWindow(this.getWidth(), this.getHeight(), this.getTitle(), this.getPreferredMonitor(), 0);
+		System.out.printf("[Window] Creating window - W: %d H: %d S: %d, Title: %s, Preferred Monitor: %d", this.getWidth(), this.getHeight(), this.getScale(), this.getTitle(), this.getPreferredMonitor());
+		
+		//Checks to make sure the window didn't fail to initialize
+		if(this._window == 0) {
+			throw new IllegalStateException("There must be a window to run the game. Maybe it failed to create? (GLFW)");
+		}
+		
+		//GLFW gets the video mode of the computer's primary/default monitor
+		GLFWVidMode videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+		
+		//Log some information for debugging
+		System.out.println("Montior Width: " + videoMode.width());
+		System.out.println("Monitor Height: " + videoMode.height());
+		System.out.println("Game Window Width: " + this.getWidth());
+		System.out.println("Game Window Height: " + this.getHeight());
+		
+		//GLFW positions the given window (this) at the specified point in pixels on the primary monitor of the computer. 
+		glfwSetWindowPos(this._window, (videoMode.width() - this.getWidth()) / 2, (videoMode.height() - this.getHeight()) / 2);
+		
+		//Display the window to the screen
+		glfwShowWindow(this._window);
+	}
+	
+	public void destroy() {
+		glfwTerminate();
+	}
+	
 }
