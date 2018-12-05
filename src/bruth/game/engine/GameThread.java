@@ -1,7 +1,5 @@
 package bruth.game.engine;
 
-import java.awt.image.renderable.RenderableImage;
-
 /* Welcome to the main game thread, the heart of the game's engine.
  * This is where screen refreshing (FPS) and updating (moving players/objects) occurs.
  * The run() method is the code that is executed by whatever thread you give this class to.
@@ -22,7 +20,6 @@ public class GameThread extends Thread implements Runnable {
 	
 	public void tick() {
 		this.tickCount++;
-		//System.out.println("Tick!");
 	}
 	
 	public void render() {

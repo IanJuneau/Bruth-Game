@@ -1,8 +1,6 @@
 package bruth.game;
 import static org.lwjgl.glfw.GLFW.*;
-import org.lwjgl.glfw.GLFWVidMode;
 import bruth.game.gfx.Window;
-import bruth.game.engine.GameThread;
 
 /*
  * This is the main file that runs the game. It just creates a window with the information passed to it. 
