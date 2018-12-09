@@ -15,6 +15,9 @@ public class Game {
 		Window window = new Window(160, 120, 3, "Bruth: Adventures of Mithia", glfwGetPrimaryMonitor());
 		window.create();
 		
+		//Sets the OpenGL Context of the window to the current OpenGL context so the game knows where to draw things
+		glfwMakeContextCurrent(window.getGLFWWindowID());
+		
 		//As long as the close window command hasn't been sent, keep looking for work to do. 
 		//Currently, it will never find any, but, it will never stop trying until you hit close.
 		while(!glfwWindowShouldClose(window.getGLFWWindowID())) {
