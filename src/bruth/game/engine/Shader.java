@@ -19,5 +19,6 @@ public class Shader {
 	
 	private String readFile(String fileName) throws IOException {
 		StringBuilder string = new StringBuilder();
+		return string.toString();
 	}
 }
