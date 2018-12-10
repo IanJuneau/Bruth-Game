@@ -44,7 +44,7 @@ public class Game {
 			
 			sprite.bind();
 			
-			glBegin(GL_QUADS);
+			/*glBegin(GL_QUADS);
 				glTexCoord2f(0, 0);
 				glVertex2f(-0.5f, 0.5f);
 				
@@ -56,7 +56,7 @@ public class Game {
 				
 				glTexCoord2f(0, 1);
 				glVertex2f(-0.5f, -0.5f);
-			glEnd();
+			glEnd();*/
 			
 			glfwSwapBuffers(window.getGLFWWindowID());
 		}

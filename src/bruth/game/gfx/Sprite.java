@@ -18,8 +18,8 @@ public class Sprite {
 	private int[] raw_pixels;
 	private ByteBuffer pixels;
 	
-	public Sprite(String filename) throws IOException {
-		image = ImageIO.read(new File(filename));
+	public Sprite(String fileName) throws IOException {
+		image = ImageIO.read(new File(fileName));
 		this.width = image.getWidth();
 		this.height = image.getHeight();
 		
