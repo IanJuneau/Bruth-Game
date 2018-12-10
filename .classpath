@@ -38,5 +38,9 @@
 	<classpathentry kind="lib" path="lib/lwjgl-stb-sources.jar"/>
 	<classpathentry kind="lib" path="lib/lwjgl-stb.jar"/>
 	<classpathentry kind="lib" path="lib/lwjgl.jar"/>
+	<classpathentry kind="lib" path="lib/joml-1.9.12-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/joml-1.9.12-sources.jar"/>
+	<classpathentry kind="lib" path="lib/joml-1.9.12.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
